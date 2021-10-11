@@ -27,5 +27,5 @@ Result of translating [hello] is [hola].
 
 ## Adjustments
 
-File Server.kt was incomplete. Server was not responding client. This has been fixed adding 
+File Server.kt was incomplete. Server was not responding client. This has been fixed by adding 
 a TranslationResponse object with the matching translated text.
