@@ -11,14 +11,15 @@ If not, and error occurs because `client` needs a file published by `server`:
 
 # Server
 
-Use `./gradlew :server:build` to build the server and `./gradlew :server:bootRun` to run the server.
+Use `./gradlew :server:build` to build the server and `./gradlew :server:bootRun` to fire up the server.
 
 # Client
 
-Use `./gradlew :client:build` to build the server and `./gradlew :client:bootRun` to run the server.
+Use `./gradlew :client:build` to build the client and `./gradlew :client:bootRun` to fire up the client.
 
 # Result
 
+Screen message appearing if everything worked fine: 
 ```
 Result of translating [hello] is [hola].
 ```
