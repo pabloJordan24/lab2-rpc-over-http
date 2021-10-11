@@ -22,6 +22,8 @@ class Client {
 
     /**
      * The Jaxb2 marshaller/unmarshaller.
+     *
+     * Serializes and Deserializes XML requests.
      */
     @Bean
     fun marshaller() = Jaxb2Marshaller().apply {
@@ -43,14 +45,16 @@ class Client {
      */
     @Bean
     fun lookup(translatorClient: TranslatorClient) = CommandLineRunner {
-        val input = "Translate me!"
+        val input = "hello"
         val request = TranslationRequest().apply {
             langFrom = "en"
             langTo = "es"
             text = input
         }
         try {
-            println("Result of translating [$input] is [${translatorClient.translate(request).translation}]")
+            //print what server side sends us back. We access attribute translation, 
+            //where the actual translated text is.
+            println("Result of translating [$input] is [${translatorClient.translate(request).translation}].")
         } catch(exception : WebServiceClientException) {
             println("Something wrong is happening with the the server; fix it!")
         }

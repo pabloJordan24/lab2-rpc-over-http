@@ -25,12 +25,17 @@ private const val TRANSLATOR_NAMESPACE_URI = "http://translator/web/ws/schema"
 
 /**
  * The translator endpoint.
+ * IMPORTANT: TranslationRequest and Response format defined in translator.xsd
+ * Useful link (https://www.baeldung.com/spring-boot-soap-web-service)
  */
 @Endpoint
 class TranslatorEndpoint {
     @PayloadRoot(namespace = TRANSLATOR_NAMESPACE_URI, localPart = "TranslationRequest")
     @ResponsePayload
-    fun translation(@RequestPayload request: TranslationRequest): TranslationResponse = TODO()
+    fun translation(@RequestPayload request: TranslationRequest): TranslationResponse = 
+    TranslationResponse().apply { translation="hola" }
+    //translation of what client sends to us (hello) is "hola".
+    //we create an object, TranslationResponse with the translation, and send it back to client.
 }
 
 
@@ -43,6 +48,8 @@ class Server {
      *
      * The [Wsdl11Definition] bean named [translator] will be exposed as `translator.wsdl` in
      * the context `/ws/translator.wsdl`
+     *
+     * MessageDispatcherServlet handles SOAP requests.
      */
     @Bean
     fun messageDispatcherServlet(applicationContext: ApplicationContext) =
